@@ -9,7 +9,7 @@ export default function Home() {
             We have the script.
           </h1>
           <p className="max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Here's this week's predictions. To see that we never miss, you can use the drop down to see our past predictions.
+            Here's this week's projected results. To see that we never miss, you can use the drop down to see our past predictions.
           </p>
         </div>
       </main>

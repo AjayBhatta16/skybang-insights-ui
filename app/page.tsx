@@ -1,12 +1,15 @@
-import Image from "next/image";
-import { WeekSelector } from "./_components/WeekSelector";
 import { MatchupService } from "./_services/MatchupService";
-import { MatchupRow } from "./_components/MatchupRow";
+import { SettingsService } from "./_services/SettingsService";
+import { MatchupView } from "./_components/views/MatchupView";
 
 export default async function Home() {
   var matchupService = new MatchupService();
+  var settingsService = new SettingsService();
 
-  var matchups = await matchupService.getMatchupsForWeek("hardcoded-for-now");
+  var settings = await settingsService.getSettings();
+
+  var weeks = await matchupService.getAvailableWeeks();
+  var matchups = await matchupService.getMatchupsForWeek(settings.currentWeekId);
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center bg-dark font-sans text-zinc-50">
@@ -18,19 +21,10 @@ export default async function Home() {
           <p className="max-w-xl text-lg leading-8 text-zinc-400">
             Here's this week's projected results. To see that we never miss, you can use the drop down to see our past predictions.
           </p>
-          <WeekSelector/>
-          <div className="flex flex-row">
-            {
-              matchups.map(m => {
-                return (
-                  <MatchupRow 
-                    matchup={m} 
-                    key={m.matchupId} 
-                  />
-                )
-              })
-            }
-          </div>
+          <MatchupView
+            weeks={weeks}
+            initialMatchups={matchups}
+          />
         </div>
       </main>
     </div>

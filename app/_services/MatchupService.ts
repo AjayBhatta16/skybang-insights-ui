@@ -3,7 +3,7 @@ import { Week } from "../_models/Week";
 
 export class MatchupService {
     // helper methods
-    getWeekName(weekCode: string) {
+    getWeekName(weekCode: string): string {
         switch (weekCode) {
             case "WC": return "Wild Card";
             case "DIV": return "Divisional";

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { WeekSelector } from "./_components/WeekSelector";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
           <p className="max-w-xl text-lg leading-8 text-zinc-400">
             Here's this week's projected results. To see that we never miss, you can use the drop down to see our past predictions.
           </p>
+          <WeekSelector/>
         </div>
       </main>
     </div>
